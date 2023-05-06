@@ -24,4 +24,30 @@ public class ListNode {
         this.val = val;
         this.next = next;
     }
+    
+    public static ListNode fromArray(int[] array) {
+        ListNode head = null;
+        ListNode tmpNode = null;
+        
+        for (int a  : array) {
+            if (tmpNode == null) {
+                tmpNode = new ListNode(a);
+                head = tmpNode;
+            } else {
+                ListNode curNode = new ListNode(a);
+                tmpNode.next = curNode;
+                tmpNode = curNode;
+            }
+        }
+        
+        return head;
+    }
+    
+    public static void main(String[] args) {
+        int[] array = new int[] {1, 2, 3};
+        
+        ListNode head = ListNode.fromArray(array);
+        
+        System.exit(0);
+    }
 }
