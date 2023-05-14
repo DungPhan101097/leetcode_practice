@@ -1,2 +1,1 @@
-# leetcode_practice
-This is a collection of leet code problems I've done based on my solution or some from the external reference 
+Here is a collection of leet code problems I've done. Hope it can be the last place you find solution to your problem
