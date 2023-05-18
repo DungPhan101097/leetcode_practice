@@ -15,17 +15,9 @@ import java.util.Map;
  * @author dungptm2
  */
 public class ValidateBST {
-    private static int MAX_VAL = Integer.MIN_VALUE;
+    private TreeNode MAX_NODE = null;
     
     public boolean isValidBST(TreeNode root) {
-        if (root == null) {
-            return true;
-        }
-
-        if (root.left == null && root.right == null) {
-            return true;
-        }
-        
         boolean isValid = doValidBST(root);
         return isValid;
     }
@@ -35,25 +27,22 @@ public class ValidateBST {
             return true;
         }
 
-        if (root.left == null && root.right == null) {
-            if (root.val > MAX_VAL) {
-                MAX_VAL = root.val;
-                return true;
-            }
+        boolean checkLeft = doValidBST(root.left);
+        if (!checkLeft) {
             return false;
         }
-
-        boolean checkLeft = doValidBST(root.left);
-        if (checkLeft) {
-            if (root.val > MAX_VAL) {
-                MAX_VAL = root.val;
+        
+        if (MAX_NODE == null) {
+            MAX_NODE = root;
+        } else {
+            if (root.val > MAX_NODE.val) {
+                MAX_NODE = root;
             } else {
                 return false;
             }
-            return doValidBST(root.right);
-        } else {
-            return false;
         }
+        
+        return doValidBST(root.right);
     }
     
     public static void main(String[] args) {
