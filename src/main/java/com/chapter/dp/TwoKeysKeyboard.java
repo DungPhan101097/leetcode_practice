@@ -27,8 +27,7 @@ public class TwoKeysKeyboard {
                 totalStep += n;
                 break;
             }
-        }
-        
+        }        
         return totalStep;
     }
     
